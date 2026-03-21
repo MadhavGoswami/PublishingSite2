@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function AuthorSection() {
   const [selectedAuthor, setSelectedAuthor] = useState<any>(null);
@@ -8,33 +9,24 @@ export default function AuthorSection() {
   const authors = [
     {
       name: "John Carter",
-      image: "/author1.jpg",
-      bookImage: "/book1.jpg",
+      image: "/author1.avif",
+      bookImage: "/Book1.avif",
       bio: "Award-winning fiction writer known for immersive storytelling.",
       description:
         "John Carter is a bestselling author whose novels have captivated readers worldwide. His latest book explores deep human emotions and gripping narratives.",
     },
     {
       name: "Emma Watson",
-      image: "/author2.jpg",
-      bookImage: "/book2.jpg",
+      image: "/author2.avif",
+      bookImage: "/Book2.avif",
       bio: "Contemporary author with a modern voice and storytelling style.",
       description:
         "Emma writes powerful stories about identity and growth. Her latest release has topped charts globally.",
     },
     {
       name: "Michael Lee",
-      image: "/author3.jpg",
-      bookImage: "/book3.jpg",
-      bio: "Master of thrillers and suspense-driven narratives.",
-      description:
-        "Michael Lee delivers edge-of-the-seat thrillers. His newest book is a must-read for suspense lovers.",
-    },
-
-     {
-      name: "Michael Lee",
-      image: "/author3.jpg",
-      bookImage: "/book3.jpg",
+      image: "/author3.avif",
+      bookImage: "/Book3.avif",
       bio: "Master of thrillers and suspense-driven narratives.",
       description:
         "Michael Lee delivers edge-of-the-seat thrillers. His newest book is a must-read for suspense lovers.",
@@ -42,60 +34,62 @@ export default function AuthorSection() {
   ];
 
   return (
-    <section id="authors" className="py-24 bg-[#f8f6f2]">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <section id="authors" className="py-28 bg-gradient-to-b from-white to-blue-50">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-20">
+          <p className="uppercase tracking-widest text-sm text-blue-600 mb-3">
+            Our Writers
+          </p>
+
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">
             Meet Our Authors
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Discover talented writers who bring stories to life and inspire readers across the world.
+
+          <p className="text-gray-500 mt-4 text-sm md:text-base max-w-xl mx-auto">
+            Discover the voices behind our stories and explore their journeys
           </p>
+
+          <div className="w-24 h-[3px] bg-blue-500 mx-auto mt-6 rounded-full"></div>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {/* GRID */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
 
           {authors.map((author, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500"
+              onClick={() => setSelectedAuthor(author)}
+              className="group relative cursor-pointer rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500"
             >
+
               {/* Image */}
-              <div className="relative h-72 overflow-hidden">
-                
-                <div
-                  className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition duration-700"
-                  style={{ backgroundImage: `url(${author.image})` }}
-                />
+              <Image
+                src={author.image}
+                alt={author.name}
+                width={400}
+                height={400}
+                className="w-full h-[340px] object-cover group-hover:scale-110 transition duration-700"
+              />
 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition"></div>
-
-                {/* Button */}
-                <div className="absolute inset-0 flex items-end justify-center pb-6 
-  opacity-100 md:opacity-0 md:group-hover:opacity-100 transition">
-  
-  <button
-    onClick={() => setSelectedAuthor(author)}
-    className="bg-[#c5a47e] text-white px-6 py-2 rounded-full text-sm font-medium hover:scale-105 transition"
-  >
-    View Profile
-  </button>
-</div>
-              </div>
+              {/* Stronger Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
 
               {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">
+              <div className="absolute bottom-0 p-6 text-white">
+
+                <h3 className="text-xl font-semibold tracking-wide">
                   {author.name}
                 </h3>
 
-                <p className="text-gray-600 text-sm">
+                <p className="text-sm text-gray-300 mt-2 leading-relaxed line-clamp-2">
                   {author.bio}
                 </p>
+
+                <span className="inline-block mt-4 text-sm text-blue-300 group-hover:underline">
+                  View Profile →
+                </span>
               </div>
             </div>
           ))}
@@ -103,45 +97,56 @@ export default function AuthorSection() {
         </div>
       </div>
 
-      {/* 🔥 MODAL */}
+      {/* MODAL */}
       {selectedAuthor && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center px-4">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center px-4 py-10 overflow-y-auto">
 
-          <div className="bg-white rounded-3xl max-w-5xl w-full overflow-hidden relative shadow-2xl">
+          <div className="bg-white max-w-5xl w-full rounded-3xl shadow-2xl relative overflow-hidden">
 
             {/* Close */}
             <button
               onClick={() => setSelectedAuthor(null)}
-              className="absolute top-5 right-5 text-2xl text-gray-600 hover:text-black"
+              className="absolute top-5 right-5 text-gray-400 hover:text-black text-xl"
             >
               ✕
             </button>
 
-            {/* Content */}
-            <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="grid md:grid-cols-2">
 
               {/* Book Image */}
-              <div
-                className="h-64 md:h-auto bg-cover bg-center"
-                style={{ backgroundImage: `url(${selectedAuthor.bookImage})` }}
-              />
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-8">
+                <Image
+                  src={selectedAuthor.bookImage}
+                  alt={selectedAuthor.name}
+                  width={400}
+                  height={500}
+                  className="rounded-xl shadow-xl object-cover"
+                />
+              </div>
 
-              {/* Details */}
+              {/* Content */}
               <div className="p-8 md:p-12 flex flex-col justify-center">
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">
+
+                <p className="uppercase tracking-widest text-sm text-blue-600 mb-2">
+                  Featured Author
+                </p>
+
+                <h3 className="text-3xl font-semibold text-gray-900">
                   {selectedAuthor.name}
                 </h3>
 
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <div className="w-16 h-[3px] bg-blue-500 mt-4 mb-6 rounded-full"></div>
+
+                <p className="text-gray-600 leading-relaxed text-sm md:text-base mb-8">
                   {selectedAuthor.description}
                 </p>
 
-                <button className="bg-[#c5a47e] text-white px-6 py-3 rounded-full w-fit hover:scale-105 transition">
+                <button className="bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition shadow-lg">
                   Buy Bestseller
                 </button>
               </div>
-            </div>
 
+            </div>
           </div>
         </div>
       )}

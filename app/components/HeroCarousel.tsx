@@ -8,19 +8,20 @@ import "swiper/css/pagination";
 
 const slides = [
   {
-    image: "/hero1.jpg",
-    title: "Discover Stories That Inspire",
-    subtitle: "Explore books from emerging authors worldwide",
+    image: "/Background1.avif",
+    title: (
+      <>
+        Discover Stories <br /> That Inspire
+      </>
+    ),
   },
   {
-    image: "/hero2.jpg",
-    title: "Where Authors Become Legends",
-    subtitle: "Publish your story with confidence",
-  },
-  {
-    image: "/hero3.jpg",
-    title: "Your Next Favorite Book Awaits",
-    subtitle: "Browse our curated collection",
+    image: "/Background2.avif",
+    title: (
+      <>
+        Where Authors <br /> Become Legends
+      </>
+    ),
   },
 ];
 
@@ -31,14 +32,12 @@ export default function HeroCarousel() {
     <section className="relative w-full h-screen">
 
       {/* 🔥 HEADER */}
-      <header className="absolute top-0 left-0 w-full z-20 flex items-center justify-between px-6 md:px-12 py-4 text-white">
+      <header className="absolute top-0 left-0 w-full z-20 flex items-center justify-between px-6 md:px-12 py-4 text-white bg-gradient-to-b from-black/60 to-transparent">
         
-        {/* Logo */}
         <div className="text-xl md:text-2xl font-bold">
           GrowingPages
         </div>
 
-        {/* Desktop Navbar */}
         <nav className="hidden md:flex gap-8 text-lg">
           <a href="#" className="hover:text-gray-300 transition">Home</a>
           <a href="#books" className="hover:text-gray-300 transition">Books</a>
@@ -46,7 +45,6 @@ export default function HeroCarousel() {
           <a href="#contact" className="hover:text-gray-300 transition">Contact</a>
         </nav>
 
-        {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)}>
             ☰
@@ -54,33 +52,30 @@ export default function HeroCarousel() {
         </div>
       </header>
 
-  {/* 📱 MOBILE MENU */}
-{menuOpen && (
-  <div className="absolute top-0 left-0 w-full h-screen bg-black/95 z-30 flex flex-col">
+      {/* 📱 MOBILE MENU */}
+      {menuOpen && (
+        <div className="absolute top-0 left-0 w-full h-screen bg-black/95 z-30 flex flex-col">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-white/20">
+            <div className="text-xl font-bold text-white">
+              GrowingPages
+            </div>
 
-    {/* Top Bar (Logo + Close Button) */}
-    <div className="flex items-center justify-between px-6 py-4 border-b border-white/20">
-      <div className="text-xl font-bold text-white">
-        GrowingPages
-      </div>
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="text-3xl text-white"
+            >
+              ✕
+            </button>
+          </div>
 
-      <button
-        onClick={() => setMenuOpen(false)}
-        className="text-3xl text-white"
-      >
-        ✕
-      </button>
-    </div>
-
-    {/* Menu Links */}
-    <div className="flex flex-col items-center justify-center flex-1 gap-8 text-white text-2xl">
-      <a href="#" onClick={() => setMenuOpen(false)}>Home</a>
-      <a href="#books" onClick={() => setMenuOpen(false)}>Books</a>
-      <a href="#authors" onClick={() => setMenuOpen(false)}>Authors</a>
-      <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
-    </div>
-  </div>
-)}
+          <div className="flex flex-col items-center justify-center flex-1 gap-8 text-white text-2xl">
+            <a href="#" onClick={() => setMenuOpen(false)}>Home</a>
+            <a href="#books" onClick={() => setMenuOpen(false)}>Books</a>
+            <a href="#authors" onClick={() => setMenuOpen(false)}>Authors</a>
+            <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+          </div>
+        </div>
+      )}
 
       {/* 🎞️ CAROUSEL */}
       <Swiper
@@ -93,24 +88,30 @@ export default function HeroCarousel() {
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div
-              className="w-full h-screen bg-cover bg-center relative flex items-center justify-center"
+              className="w-full h-screen bg-cover bg-center relative flex justify-center pt-40 md:pt-52"
               style={{ backgroundImage: `url(${slide.image})` }}
             >
               {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/70"></div>
+              <div className="absolute inset-0 bg-black/50"></div>
 
               {/* Content */}
-              <div className="relative z-10 text-center text-white px-6 max-w-2xl">
-                <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
-                  {slide.title}
-                </h1>
-                <p className="text-lg md:text-xl mb-6">
-                  {slide.subtitle}
+              <div className="relative z-10 text-center text-white px-6 max-w-3xl mx-auto">
+
+                {/* Small Tagline */}
+                <p className="uppercase tracking-[0.3em] text-xs md:text-sm text-gray-200 mb-4">
+                  The Award-Winning Book
                 </p>
 
-                <button className="bg-[#c5a47e] text-white px-8 py-3 rounded-full text-lg font-medium hover:scale-105 transition">
-                  Buy Now
+                {/* Main Heading */}
+                <h1 className="text-4xl md:text-6xl font-serif font-semibold mb-6">
+                  {slide.title}
+                </h1>
+
+                {/* Minimal Button */}
+                <button className="text-sm tracking-widest border-b border-white pb-1 hover:text-gray-300 transition">
+                  BUY NOW
                 </button>
+
               </div>
             </div>
           </SwiperSlide>

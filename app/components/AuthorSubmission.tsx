@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function AuthorSubmission() {
   const [file, setFile] = useState<File | null>(null);
@@ -33,70 +34,93 @@ export default function AuthorSubmission() {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-r from-[#f8f6f2] to-[#f1ede7]">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section className="py-28 bg-gradient-to-b from-white to-blue-50">
+      <div className="max-w-7xl mx-auto px-6">
 
-        {/* LEFT CONTENT */}
-        <div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-            Share Your Story With The World
-          </h2>
+        {/* Heading */}
+        <div className="text-center mb-20">
 
-          <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-            Submit your manuscript and take the first step toward becoming a published author. 
-            Our editorial team reviews every submission carefully.
+          <p className="uppercase tracking-widest text-sm text-blue-600 mb-3">
+            Get Published
           </p>
 
-          {/* Upload Input */}
-          <label className="block mb-4">
-            <span className="sr-only">Choose file</span>
-            <input
-              type="file"
-              accept=".pdf,.doc,.docx"
-              onChange={handleFileChange}
-              className="block w-full text-sm text-gray-600
-                file:mr-4 file:py-3 file:px-6
-                file:rounded-full file:border-0
-                file:text-sm file:font-medium
-                file:bg-[#c5a47e] file:text-white
-                hover:file:scale-105 transition cursor-pointer"
-            />
-          </label>
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">
+            Submit Your Manuscript
+          </h2>
 
-          {/* File Name */}
-          {file && (
-            <p className="text-sm text-gray-700 mb-4">
-              Uploaded: <span className="font-medium">{file.name}</span>
-            </p>
-          )}
+          <p className="text-gray-500 mt-4 text-sm md:text-base max-w-xl mx-auto">
+            Take the first step toward becoming a published author with our platform
+          </p>
 
-          {/* Submit Button (Only After Upload) */}
-          {uploaded && (
-            <button
-              onClick={handleSubmit}
-              className="bg-black text-white px-8 py-3 rounded-full text-lg font-medium hover:scale-105 transition"
-            >
-              Submit Manuscript
-            </button>
-          )}
+          <div className="w-24 h-[3px] bg-blue-500 mx-auto mt-6 rounded-full"></div>
         </div>
 
-        {/* RIGHT VISUAL */}
-        <div className="relative w-full h-[300px] md:h-[450px] rounded-2xl overflow-hidden shadow-xl">
-          <img
-            src="/submission.jpg"
-            alt="Author Writing"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/30"></div>
+        {/* Layout */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-          <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-md max-w-xs">
-            <p className="text-sm text-gray-700">
-              “Your story deserves to be heard. Start your publishing journey today.”
+          {/* LEFT CARD */}
+          <div className="bg-white shadow-2xl rounded-3xl p-8 md:p-10 border border-gray-100">
+
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+              Share Your Story With The World
+            </h3>
+
+            <p className="text-gray-600 text-sm leading-relaxed mb-8">
+              Submit your manuscript and our editorial team will carefully review it.
+              We’re always looking for fresh voices and powerful stories.
             </p>
+
+            {/* Upload Box */}
+            <label className="flex flex-col items-center justify-center w-full border-2 border-dashed border-blue-400 rounded-2xl p-10 cursor-pointer hover:bg-blue-50 transition-all duration-300 group">
+
+              <span className="text-blue-600 font-semibold mb-2 group-hover:scale-105 transition">
+                Click to upload or drag & drop
+              </span>
+
+              <span className="text-xs text-gray-500">
+                PDF, DOC, DOCX (Max 10MB)
+              </span>
+
+              <input
+                type="file"
+                accept=".pdf,.doc,.docx"
+                onChange={handleFileChange}
+                className="hidden"
+              />
+            </label>
+
+            {/* File Info */}
+            {file && (
+              <div className="mt-5 text-sm text-gray-700 bg-blue-50 px-4 py-3 rounded-lg border border-blue-100">
+                Uploaded: <span className="font-medium">{file.name}</span>
+              </div>
+            )}
+
+            {/* Submit Button */}
+            {uploaded && (
+              <button
+                onClick={handleSubmit}
+                className="mt-6 w-full bg-blue-600 text-white py-3 rounded-full font-medium hover:bg-blue-700 transition shadow-lg hover:shadow-xl"
+              >
+                Submit Manuscript
+              </button>
+            )}
           </div>
-        </div>
 
+          {/* RIGHT IMAGE */}
+          <div className="relative group">
+            <div className="absolute inset-0 bg-blue-500/20 rounded-3xl blur-2xl"></div>
+
+            <Image
+              src="/final.jpeg"
+              alt="Author Writing"
+              width={600}
+              height={700}
+              className="relative rounded-3xl shadow-2xl object-cover w-full h-[420px] md:h-[520px] group-hover:scale-105 transition duration-700"
+            />
+          </div>
+
+        </div>
       </div>
     </section>
   );
