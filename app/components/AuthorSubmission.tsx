@@ -35,7 +35,7 @@ export default function AuthorSubmission() {
 
   return (
     <section className="py-28 bg-gradient-to-b from-white to-blue-50">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
 
         {/* Heading */}
         <div className="text-center mb-20">
