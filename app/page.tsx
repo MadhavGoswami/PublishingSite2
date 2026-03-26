@@ -7,11 +7,16 @@ import BlogSection from "@/app/components/BlogSection";
 export default function Home() {
   return (
     <>
-      <HeroCarousel />
-      <AuthorSection />
-      <LatestBooks />
-      <AuthorSubmission />
-      <BlogSection />
+    <section id='top'><HeroCarousel /></section>
+      
+       <section id='author'><AuthorSection /></section>
+      
+       <section id='books'><LatestBooks /></section>
+      
+       <section id='manu'><AuthorSubmission /></section>
+      
+       <section id='blog'><BlogSection /></section>
+      
       {/* Other sections below */}
     </>
   );

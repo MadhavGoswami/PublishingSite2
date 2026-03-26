@@ -23,7 +23,7 @@ export default function BlogSection() {
       title: "Writing a Bestseller in 2026",
       image: "/Blog5.png",
       category: "Success",
-      excerpt: "Learn proven strategies to write books people love.",
+      excerpt: "Learn proven strategies to write books people love and respect.",
     },
   ];
 
