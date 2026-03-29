@@ -12,3 +12,18 @@
 .blink-soft {
   animation: softBlink 1.8s ease-in-out infinite;
 }
+
+@keyframes softBlink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.animate-soft-blink {
+  animation: softBlink 1.8s ease-in-out infinite;
+}

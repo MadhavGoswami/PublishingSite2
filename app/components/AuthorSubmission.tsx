@@ -9,7 +9,6 @@ export default function AuthorSubmission() {
 
   const handleFileChange = (e: any) => {
     const selectedFile = e.target.files[0];
-
     if (!selectedFile) return;
 
     const allowedTypes = [
@@ -39,7 +38,6 @@ export default function AuthorSubmission() {
 
         {/* Heading */}
         <div className="text-center mb-20">
-
           <p className="uppercase tracking-widest text-sm text-blue-600 mb-3">
             Get Published
           </p>
@@ -49,7 +47,12 @@ export default function AuthorSubmission() {
           </h2>
 
           <p className="text-gray-500 mt-4 text-sm md:text-base max-w-xl mx-auto">
-            Take the first step toward becoming a published author with our platform
+            Take the first step toward becoming a published author
+          </p>
+
+          {/* ✅ STRONGER reassurance */}
+          <p className="text-xs text-gray-500 mt-3">
+            ✔ Reviewed within 3–5 business days • ✔ Professional editorial feedback • ✔ Secure & confidential
           </p>
 
           <div className="w-24 h-[3px] bg-blue-500 mx-auto mt-6 rounded-full"></div>
@@ -61,14 +64,28 @@ export default function AuthorSubmission() {
           {/* LEFT CARD */}
           <div className="bg-white shadow-2xl rounded-3xl p-8 md:p-10 border border-gray-100">
 
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">
               Share Your Story With The World
             </h3>
 
-            <p className="text-gray-600 text-sm leading-relaxed mb-8">
-              Submit your manuscript and our editorial team will carefully review it.
-              We’re always looking for fresh voices and powerful stories.
+            <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              Our editorial team reviews every submission carefully and provides clear next steps.
             </p>
+
+            {/* ✅ STEP FLOW */}
+            <div className="flex items-center gap-3 text-xs mb-6">
+              <span className="bg-blue-600 text-white px-3 py-1 rounded-full">
+                Step 1
+              </span>
+              <span className="text-gray-500">Upload Manuscript</span>
+
+              <span className="text-gray-300">→</span>
+
+              <span className={`px-3 py-1 rounded-full ${uploaded ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-500"}`}>
+                Step 2
+              </span>
+              <span className="text-gray-500">Submit for Review</span>
+            </div>
 
             {/* Upload Box */}
             <label className="flex flex-col items-center justify-center w-full border-2 border-dashed border-blue-400 rounded-2xl p-10 cursor-pointer hover:bg-blue-50 transition-all duration-300 group">
@@ -91,20 +108,42 @@ export default function AuthorSubmission() {
 
             {/* File Info */}
             {file && (
-              <div className="mt-5 text-sm text-gray-700 bg-blue-50 px-4 py-3 rounded-lg border border-blue-100">
-                Uploaded: <span className="font-medium">{file.name}</span>
+              <div className="mt-5 text-sm text-gray-700 bg-blue-50 px-4 py-3 rounded-lg border border-blue-100 flex justify-between items-center">
+                <span>
+                  {file.name}
+                </span>
+                <span className="text-green-600 text-xs font-medium">
+                  ✓ Uploaded
+                </span>
               </div>
             )}
 
-            {/* Submit Button */}
+            {/* ✅ ENHANCED CTA */}
             {uploaded && (
-              <button
-                onClick={handleSubmit}
-                className="mt-6 w-full bg-blue-600 text-white py-3 rounded-full font-medium hover:bg-blue-700 transition shadow-lg hover:shadow-xl"
-              >
-                Submit Manuscript
-              </button>
+              <>
+                <button
+                  onClick={handleSubmit}
+                  className="relative mt-6 w-full overflow-hidden py-4 rounded-full font-semibold text-white text-sm group"
+                >
+                  {/* Background */}
+                  <span className="absolute inset-0 bg-blue-600 group-hover:bg-blue-700 transition duration-300"></span>
+
+                  {/* Glow */}
+                  <span className="absolute -inset-1 bg-blue-400/40 blur-xl opacity-70 group-hover:opacity-100 transition"></span>
+
+                  {/* Text */}
+                  <span className="relative z-10">
+                    Submit for Review →
+                  </span>
+                </button>
+
+                {/* ✅ TRUST MICROCOPY */}
+                <p className="text-xs text-gray-400 mt-3 text-center">
+                  No commitment required • We’ll email you next steps within 3–5 days
+                </p>
+              </>
             )}
+
           </div>
 
           {/* RIGHT IMAGE */}

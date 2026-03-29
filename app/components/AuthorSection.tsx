@@ -6,33 +6,32 @@ import Image from "next/image";
 export default function AuthorSection() {
   const [selectedAuthor, setSelectedAuthor] = useState<any>(null);
 
-  const authors = [
-    {
-      name: "John Carter",
-      image: "/author1.avif",
-      bookImage: "/Book1.avif",
-      bio: "Award-winning fiction writer known for immersive storytelling.",
-      description:
-        "John Carter is a bestselling author whose novels have captivated readers worldwide. His latest book explores deep human emotions and gripping narratives.",
-    },
-    {
-      name: "Emma Watson",
-      image: "/author2.avif",
-      bookImage: "/Book2.avif",
-      bio: "Contemporary author with a modern voice and storytelling style.",
-      description:
-        "Emma writes powerful stories about identity and growth. Her latest release has topped charts globally.",
-    },
-    {
-      name: "Michael Lee",
-      image: "/author3.avif",
-      bookImage: "/Book3.avif",
-      bio: "Master of thrillers and suspense-driven narratives.",
-      description:
-        "Michael Lee delivers edge-of-the-seat thrillers. His newest book is a must-read for suspense lovers.",
-    },
-  ];
-
+const authors = [
+  {
+    name: "John Carter",
+    image: "/Trial4.png",
+    bookImage: "/Book1.avif",
+    bio: "Fiction Author • Literary Storytelling • Award-Winning",
+    description:
+      "John Carter is a master of literary fiction, known for crafting emotionally rich narratives that linger long after the final page. His storytelling blends introspection with powerful human themes, drawing readers into deeply immersive worlds. His latest novel explores love, loss, and resilience through unforgettable characters.",
+  },
+  {
+    name: "Emma Watson",
+    image: "/Trial3.png",
+    bookImage: "/Book2.avif",
+    bio: "Contemporary Writer • Modern Fiction • Global Bestseller",
+    description:
+      "Emma Watson brings a fresh and compelling voice to modern fiction, exploring identity, transformation, and the complexities of contemporary life. Her writing resonates with a global audience, offering stories that are both intimate and universally relatable. Her latest release continues to redefine modern storytelling.",
+  },
+  {
+    name: "Michael Lee",
+    image: "/Trial2.png",
+    bookImage: "/Book3.avif",
+    bio: "Thriller Author • Suspense Fiction • Award Winner",
+    description:
+      "Michael Lee is renowned for his gripping thrillers that keep readers on the edge of their seats. With sharp pacing and unexpected twists, his stories deliver intense suspense and psychological depth. His latest book is a high-stakes journey filled with tension, intrigue, and unforgettable moments.",
+  },
+];
   return (
     <section id="authors" className="py-20 md:py-28 bg-gradient-to-b from-white to-blue-50">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
@@ -87,10 +86,14 @@ export default function AuthorSection() {
                   {author.bio}
                 </p>
 
-                <span className="inline-block mt-3 text-sm text-blue-300 group-hover:underline">
-                  View Profile →
-                </span>
-              </div>
+                <button
+  onClick={() => setSelectedAuthor(author)}
+  className="mt-4 text-xs md:text-sm font-medium text-blue-300 border border-blue-400 px-4 py-1.5 rounded-full 
+  hover:bg-blue-500 hover:text-white transition-all duration-300 
+  animate-soft-blink shadow-[0_0_10px_rgba(59,130,246,0.5)]"
+>
+  Read More
+</button>  </div>
             </div>
           ))}
 
@@ -114,16 +117,27 @@ export default function AuthorSection() {
             <div className="grid md:grid-cols-2">
 
               {/* Book Image */}
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-6 md:p-8">
-                <Image
-                  src={selectedAuthor.bookImage}
-                  alt={selectedAuthor.name}
-                  width={400}
-                  height={500}
-                  className="rounded-xl shadow-xl object-cover w-[220px] sm:w-[260px] md:w-auto"
-                />
-              </div>
+<div className="bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-6 md:p-10">
 
+  <div className="relative group">
+
+    {/* Glow background */}
+    <div className="absolute -inset-2 bg-blue-200/40 blur-2xl rounded-2xl opacity-70 group-hover:opacity-100 transition duration-500"></div>
+
+    <Image
+      src={selectedAuthor.bookImage}
+      alt={selectedAuthor.name}
+      width={400}
+      height={520}
+      className="relative rounded-2xl shadow-2xl object-cover 
+      w-[240px] sm:w-[280px] md:w-[320px] lg:w-[360px] 
+      h-[340px] sm:h-[400px] md:h-[460px] lg:h-[520px] 
+      transition-transform duration-500 group-hover:scale-105 hover:rotate-1"
+    />
+
+  </div>
+
+</div>
               {/* Content */}
               <div className="p-6 md:p-10 lg:p-12 flex flex-col justify-center">
 
